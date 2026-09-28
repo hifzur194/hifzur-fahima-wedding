@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hifzur & Fahima — Wedding RSVP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #8b4513;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #d4a574;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .date-location {
+            background: #f9f3ed;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .date-location p {
+            margin: 8px 0;
+            font-size: 1em;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #8b4513;
+        }
+
+        .message {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #8b4513;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d4a574;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Georgia', serif;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #8b4513;
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+        }
+
+        .btn-accept {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-accept:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-decline {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-decline:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0d5ca;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hifzur & Fahima</h1>
+        <div class="subtitle">We're Getting Married!</div>
+
+        <div class="date-location">
+            <p><span class="label">Date:</span> 4th October 2026</p>
+            <p><span class="label">Time:</span> [Your Wedding Time]</p>
+            <p><span class="label">Location:</span> Our Own Residence</p>
+        </div>
+
+        <div class="message">
+            <p>We would love to celebrate with you. Please let us know if you can attend!</p>
+        </div>
+
+        <div class="form-group">
+            <label for="guestName">Your Name *</label>
+            <input type="text" id="guestName" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="guestCount">Number of Guests *</label>
+            <input type="number" id="guestCount" min="1" value="1" required>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-accept" onclick="sendRSVP(true)">✓ I'm Attending</button>
+            <button class="btn-decline" onclick="sendRSVP(false)">✗ Can't Attend</button>
+        </div>
+
+        <div class="footer">
+            <p>RSVP by [Your RSVP Deadline Date]</p>
+            <p>We'll send you more details via WhatsApp</p>
+        </div>
+    </div>
+
+    <script>
+        function sendRSVP(isAttending) {
+            const name = document.getElementById('guestName').value.trim();
+            const count = document.getElementById('guestCount').value;
+
+            if (!name) {
+                alert('Please enter your name');
+                return;
+            }
+
+            const status = isAttending ? 'ATTENDING' : 'NOT ATTENDING';
+            const message = `Hi! I'm ${name}. I'll have ${count} guest(s). Status: ${status}`;
+
+            const whatsappNumber = '1234567890';
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
