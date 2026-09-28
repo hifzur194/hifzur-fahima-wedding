@@ -25,7 +25,7 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
             padding: 40px 30px;
             text-align: center;
@@ -66,7 +66,7 @@
 
         .message {
             color: #666;
-            font-size: 1.1em;
+            font-size: 1.08em;
             margin-bottom: 30px;
             line-height: 1.6;
         }
@@ -84,20 +84,17 @@
         }
 
         input[type="text"],
-        input[type="number"],
-        select {
+        input[type="number"] {
             width: 100%;
             padding: 12px;
             border: 2px solid #d4a574;
             border-radius: 8px;
             font-size: 1em;
             font-family: 'Georgia', serif;
-            transition: border-color 0.3s;
         }
 
         input[type="text"]:focus,
-        input[type="number"]:focus,
-        select:focus {
+        input[type="number"]:focus {
             outline: none;
             border-color: #8b4513;
             box-shadow: 0 0 5px rgba(139, 69, 19, 0.2);
@@ -173,7 +170,7 @@
 
         <div class="date-location">
             <p><span class="label">Date:</span> 4th October 2026</p>
-            <p><span class="label">Time:</span> [Your Wedding Time]</p>
+            <p><span class="label">Time:</span> 12:00 Noon</p>
             <p><span class="label">Location:</span> Our Own Residence</p>
         </div>
 
@@ -197,8 +194,7 @@
         </div>
 
         <div class="footer">
-            <p>RSVP by [Your RSVP Deadline Date]</p>
-            <p>We'll send you more details via WhatsApp</p>
+            <p>Contact: 7896971782</p>
         </div>
     </div>
 
@@ -215,9 +211,8 @@
             const status = isAttending ? 'ATTENDING' : 'NOT ATTENDING';
             const message = `Hi! I'm ${name}. I'll have ${count} guest(s). Status: ${status}`;
 
-            const whatsappNumber = '1234567890';
+            const whatsappNumber = '917896971782';
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
             window.open(whatsappURL, '_blank');
         }
     </script>
